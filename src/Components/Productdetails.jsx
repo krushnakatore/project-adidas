@@ -1,14 +1,14 @@
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import "./productDetails.css";
+import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import './productDetails.css';
 
-import { Details } from "./details";
-import { Details2 } from "./details2";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { IoIosStar } from "react-icons/io";
+import { Details } from './details';
+import { Details2 } from './details2';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { IoIosStar } from 'react-icons/io';
 
-import { GrStatusWarning, GrDeliver } from "react-icons/gr";
-import axios from "axios";
+import { GrStatusWarning, GrDeliver } from 'react-icons/gr';
+import axios from 'axios';
 
 export const ProductDetails = () => {
   const { id } = useParams();
@@ -17,7 +17,7 @@ export const ProductDetails = () => {
   const [value, setValue] = useState({});
   const [imgnum, setimgnum] = useState(0);
   useEffect(() => {
-    fetch(`https://adidasbackend.herokuapp.com/alldata/single/${id}`)
+    fetch(`https://adidasbackend.onrender.com/alldata/single/${id}`)
       .then((res) => res.json())
       .then((result) => {
         setData(result);
@@ -30,12 +30,12 @@ export const ProductDetails = () => {
   const handleAddCart = (data) => {
     console.log(data[0]);
 
-    if (localStorage.getItem("shopcart") === null) {
-      localStorage.setItem("shopcart", JSON.stringify([]));
+    if (localStorage.getItem('shopcart') === null) {
+      localStorage.setItem('shopcart', JSON.stringify([]));
     }
-    let cart = JSON.parse(localStorage.getItem("shopcart"));
+    let cart = JSON.parse(localStorage.getItem('shopcart'));
     cart.push(data[0]);
-    localStorage.setItem("shopcart", JSON.stringify(cart));
+    localStorage.setItem('shopcart', JSON.stringify(cart));
   };
 
   return (
@@ -49,12 +49,12 @@ export const ProductDetails = () => {
         </a>
         <div id="rightSideBox">
           <Link to="/signup">
-            <button style={{ width: "100px", marginLeft: "-160px" }}>
+            <button style={{ width: '100px', marginLeft: '-160px' }}>
               sign up
             </button>
           </Link>
           <Link to="/login">
-            <button style={{ width: "100px", marginLeft: "80px" }}>
+            <button style={{ width: '100px', marginLeft: '80px' }}>
               log in
             </button>
           </Link>
@@ -79,8 +79,8 @@ export const ProductDetails = () => {
       </div>
 
       <div id="productDescription">
-        <div id="imageBox" style={{ display: "flex", justifyContent: "left" }}>
-          <img style={{ height: "100%" }} src={imagearr[imgnum]} alt="image" />
+        <div id="imageBox" style={{ display: 'flex', justifyContent: 'left' }}>
+          <img style={{ height: '100%' }} src={imagearr[imgnum]} alt="image" />
           <button
             onClick={() => {
               if (imgnum < 2) {
@@ -88,12 +88,12 @@ export const ProductDetails = () => {
               }
             }}
             style={{
-              marginTop: "60%",
-              marginLeft: "20%",
-              fontSize: "220%",
-              zindex: "4",
-              width: "100px",
-              height: "50px",
+              marginTop: '60%',
+              marginLeft: '20%',
+              fontSize: '220%',
+              zindex: '4',
+              width: '100px',
+              height: '50px',
             }}
           >
             <FaArrowRight />
@@ -105,24 +105,24 @@ export const ProductDetails = () => {
               }
             }}
             style={{
-              marginTop: "60%",
-              marginLeft: "-88%",
-              fontSize: "220%",
-              width: "100px",
-              zindex: "4",
-              height: "50px",
+              marginTop: '60%',
+              marginLeft: '-88%',
+              fontSize: '220%',
+              width: '100px',
+              zindex: '4',
+              height: '50px',
             }}
           >
             <FaArrowLeft />
           </button>
         </div>
         <div id="descriptionBox">
-          <h3 style={{ padding: "20px" }}>{data.title}</h3>
-          <p style={{ color: "red", display: "flex", marginLeft: "40%" }}>
-            <div style={{ color: "#bdbdbd" }}>MRP: </div>
+          <h3 style={{ padding: '20px' }}>{data.title}</h3>
+          <p style={{ color: 'red', display: 'flex', marginLeft: '40%' }}>
+            <div style={{ color: '#bdbdbd' }}>MRP: </div>
             {data.price}
           </p>
-          <p style={{ color: "#bdbdbd" }}>(inclusive all taxes)</p>
+          <p style={{ color: '#bdbdbd' }}>(inclusive all taxes)</p>
 
           <p>Avilable sizes</p>
 
@@ -149,7 +149,7 @@ export const ProductDetails = () => {
             <br />
             <br />
           </Link>
-          <div style={{ justifyContent: "", margin: "5px" }}>
+          <div style={{ justifyContent: '', margin: '5px' }}>
             <div className="dtxt">
               <GrStatusWarning />
               FREE SHIPPING FOR ALL ORDERS
@@ -168,25 +168,25 @@ export const ProductDetails = () => {
           <table className="table1">
             <div
               style={{
-                display: "flex",
-                color: "#5f5f5f",
-                width: "195%",
-                textAlign: "left",
-                padding: "10px",
+                display: 'flex',
+                color: '#5f5f5f',
+                width: '195%',
+                textAlign: 'left',
+                padding: '10px',
               }}
             >
-              <div style={{ padding: "10%" }}>
-                <h1 style={{ color: "#000000" }}>{data.title}</h1>
-                <h3 style={{ color: "#000000" }}>{data.discription_head}</h3>
+              <div style={{ padding: '10%' }}>
+                <h1 style={{ color: '#000000' }}>{data.title}</h1>
+                <h3 style={{ color: '#000000' }}>{data.discription_head}</h3>
                 <p>{data.discription}</p>
               </div>
-              <img style={{ height: "100%", width: "40%" }} src={imagearr[0]} />
+              <img style={{ height: '100%', width: '40%' }} src={imagearr[0]} />
             </div>
-            <div style={{ display: "flex" }}>
-              <div style={{ textAlign: "left", margin: "20px", width: "100%" }}>
+            <div style={{ display: 'flex' }}>
+              <div style={{ textAlign: 'left', margin: '20px', width: '100%' }}>
                 <Details />
               </div>
-              <div style={{ textAlign: "left", margin: "20px", width: "100%" }}>
+              <div style={{ textAlign: 'left', margin: '20px', width: '100%' }}>
                 <Details2 />
               </div>
             </div>
@@ -219,7 +219,7 @@ export const ProductDetails = () => {
           <br />
           <br />
 
-          <h1 style={{ textAlign: "left" }}>Rating and reviews</h1>
+          <h1 style={{ textAlign: 'left' }}>Rating and reviews</h1>
           <div className="star">
             <IoIosStar />
             <IoIosStar />
@@ -229,7 +229,7 @@ export const ProductDetails = () => {
             {data.rating}
           </div>
           <br />
-          <div style={{ display: "flex" }}>
+          <div style={{ display: 'flex' }}>
             <div>
               <div className="txt">
                 <IoIosStar />

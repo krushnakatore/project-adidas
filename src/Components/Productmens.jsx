@@ -1,17 +1,17 @@
-import "./Productmens.css";
-import { createElement, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Link } from "react-router-dom";
-import { Footer } from "./Footer";
+import './Productmens.css';
+import { createElement, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, Link } from 'react-router-dom';
+import { Footer } from './Footer';
 import {
   getwomensError,
   getwomensLoading,
   getwomensSuccess,
   getwomensSuccess1,
-} from "../redux/action";
-import { loadData, saveData } from "../utils/localStorage";
-import { Filterbar } from "./Filterbar";
-import { Navbar } from "./Navbar";
+} from '../redux/action';
+import { loadData, saveData } from '../utils/localStorage';
+import { Filterbar } from './Filterbar';
+import { Navbar } from './Navbar';
 
 export const ProductsMens = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export const ProductsMens = () => {
 
   const getForm = () => {
     //  dispatch(getwomensLoading());
-    fetch(`https://adidasbackend.herokuapp.com/mens/page?page=${page}&limit=10`)
+    fetch(`https://adidasbackend.onrender.com/mens/page?page=${page}&limit=10`)
       .then((d) => d.json())
       .then((res) => {
         dispatch(getwomensSuccess1(res));
@@ -39,24 +39,24 @@ export const ProductsMens = () => {
   //  console.log("data",data);
 
   const productDetails = (id) => {
-    loadData("Product");
-    saveData("Product", id);
+    loadData('Product');
+    saveData('Product', id);
     // Navigate()
   };
 
   const showDivision = (e) => {
-    if (e.target.value == "clothing") {
-      let newProducts = womens.filter((item) => item.Division === "clothing");
+    if (e.target.value == 'clothing') {
+      let newProducts = womens.filter((item) => item.Division === 'clothing');
       setData(newProducts);
       setCount(1);
-    } else if (e.target.value == "shoes") {
-      let shoes = womens.filter((item) => item.Division === "shoes");
+    } else if (e.target.value == 'shoes') {
+      let shoes = womens.filter((item) => item.Division === 'shoes');
       //  console.log("s",shoes)
       setData(shoes);
       setCount(2);
-    } else if (e.target.value == "accessories") {
+    } else if (e.target.value == 'accessories') {
       const accessories = womens.filter(
-        (item) => item.Division === "accessories"
+        (item) => item.Division === 'accessories'
       );
       setData(accessories);
       setCount(3);
@@ -65,17 +65,17 @@ export const ProductsMens = () => {
   };
 
   const showGender = (e) => {
-    if (e.target.value == "Men") {
-      let men = womens.filter((item) => item.Division === "men");
+    if (e.target.value == 'Men') {
+      let men = womens.filter((item) => item.Division === 'men');
       setData(men);
       setCount(6);
-    } else if (e.target.value == "Women") {
-      let women = womens.filter((item) => item.Division === "women");
+    } else if (e.target.value == 'Women') {
+      let women = womens.filter((item) => item.Division === 'women');
       //  console.log("s",shoes)
       setData(women);
       setCount(7);
-    } else if (e.target.value == "kids") {
-      let kids = womens.filter((item) => item.Division === "kids");
+    } else if (e.target.value == 'kids') {
+      let kids = womens.filter((item) => item.Division === 'kids');
       setData(kids);
       setCount(8);
       // dispatch(getwomensSuccess(accessories));
@@ -84,7 +84,7 @@ export const ProductsMens = () => {
   // console.log(title,count,flag)
   //sorting===================================================================================//==========================================
   function showSortFilter(womens, e) {
-    if (e.target.value == "low") {
+    if (e.target.value == 'low') {
       function sortLH() {
         let array = womens.sort((a, b) => a.pn - b.pn);
         // console.log("w",array)
@@ -92,7 +92,7 @@ export const ProductsMens = () => {
         setData(array);
       }
       sortLH();
-    } else if (e.target.value == "high") {
+    } else if (e.target.value == 'high') {
       //Sort High to Low Function
       function sortHL() {
         let array = womens.sort((a, b) => b.pn - a.pn);
@@ -139,7 +139,7 @@ export const ProductsMens = () => {
         <div className="">
           <u>
             <b>Back</b>Home / Men
-          </u>{" "}
+          </u>{' '}
           / New Arrivals
         </div>
         <h1 className="productHeading">
@@ -251,7 +251,7 @@ export const ProductsMens = () => {
         </div>
 
         <div className="produ display-products">
-          {" "}
+          {' '}
           {title.map((e) => (
             <div>
               <div
@@ -291,8 +291,8 @@ export const ProductsMens = () => {
         </button>
         <button
           style={{
-            marginLeft: "70%",
-            marginTop: "-20px",
+            marginLeft: '70%',
+            marginTop: '-20px',
           }}
           onClick={() => {
             setPage(page + 1);
@@ -303,7 +303,7 @@ export const ProductsMens = () => {
 
         <h2
           style={{
-            paddingLeft: "2.5%",
+            paddingLeft: '2.5%',
           }}
         >
           OUR CLOTHING AND SHOE CATEGORIES

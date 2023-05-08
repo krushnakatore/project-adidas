@@ -1,17 +1,17 @@
-import { createElement, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Link } from "react-router-dom";
+import { createElement, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, Link } from 'react-router-dom';
 import {
   getwomensError,
   getwomensLoading,
   getwomensSuccess,
   getwomensSuccess1,
-} from "../redux/action";
-import { loadData, saveData } from "../utils/localStorage";
-import { Filterbar } from "./Filterbar";
-import { Footer } from "./Footer";
-import { Navbar } from "./Navbar";
-import "./Productmens.css";
+} from '../redux/action';
+import { loadData, saveData } from '../utils/localStorage';
+import { Filterbar } from './Filterbar';
+import { Footer } from './Footer';
+import { Navbar } from './Navbar';
+import './Productmens.css';
 
 export const ProductsKids = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ export const ProductsKids = () => {
 
   const getForm = () => {
     dispatch(getwomensLoading());
-    fetch(`https://adidasbackend.herokuapp.com/kids/page?page=${page}&limit=10`)
+    fetch(`https://adidasbackend.onrender.com/kids/page?page=${page}&limit=10`)
       .then((d) => d.json())
       .then((res) => {
         dispatch(getwomensSuccess(res));
@@ -38,24 +38,24 @@ export const ProductsKids = () => {
   //  console.log("data",data);
 
   const productDetails = (id) => {
-    loadData("Product");
-    saveData("Product", id);
+    loadData('Product');
+    saveData('Product', id);
     // Navigate()
   };
 
   const showDivision = (e) => {
-    if (e.target.value == "clothing") {
-      let newProducts = womens.filter((item) => item.Division === "clothing");
+    if (e.target.value == 'clothing') {
+      let newProducts = womens.filter((item) => item.Division === 'clothing');
       setData(newProducts);
       setCount(1);
-    } else if (e.target.value == "shoes") {
-      let shoes = womens.filter((item) => item.Division === "shoes");
+    } else if (e.target.value == 'shoes') {
+      let shoes = womens.filter((item) => item.Division === 'shoes');
       //  console.log("s",shoes)
       setData(shoes);
       setCount(2);
-    } else if (e.target.value == "accessories") {
+    } else if (e.target.value == 'accessories') {
       const accessories = womens.filter(
-        (item) => item.Division === "accessories"
+        (item) => item.Division === 'accessories'
       );
       setData(accessories);
       setCount(3);
@@ -65,7 +65,7 @@ export const ProductsKids = () => {
   // console.log(title,count,flag)
   //sorting===================================================================================//==========================================
   function showSortFilter(womens, e) {
-    if (e.target.value == "low") {
+    if (e.target.value == 'low') {
       function sortLH() {
         let array = womens.sort((a, b) => a.pn - b.pn);
         // console.log("w",array)
@@ -73,7 +73,7 @@ export const ProductsKids = () => {
         setData(array);
       }
       sortLH();
-    } else if (e.target.value == "high") {
+    } else if (e.target.value == 'high') {
       //Sort High to Low Function
       function sortHL() {
         let array = womens.sort((a, b) => b.pn - a.pn);
@@ -110,7 +110,7 @@ export const ProductsKids = () => {
         <div className="">
           <u>
             <b>Back</b>Home / Men
-          </u>{" "}
+          </u>{' '}
           / New Arrivals
         </div>
         <h1 className="productHeading">
@@ -219,7 +219,7 @@ export const ProductsKids = () => {
         </div>
 
         <div className="produ display-products">
-          {" "}
+          {' '}
           {title.map((e) => (
             <div>
               <div
@@ -253,7 +253,7 @@ export const ProductsKids = () => {
         </button>
         <button
           style={{
-            marginLeft: "97%",
+            marginLeft: '97%',
           }}
           onClick={() => {
             setPage(page + 1);
@@ -264,7 +264,7 @@ export const ProductsKids = () => {
 
         <h2
           style={{
-            paddingLeft: "2.5%",
+            paddingLeft: '2.5%',
           }}
         >
           OUR CLOTHING AND SHOE CATEGORIES
