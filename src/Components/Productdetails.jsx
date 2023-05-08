@@ -28,14 +28,14 @@ export const ProductDetails = () => {
   }, [id]);
 
   const handleAddCart = (data) => {
-    console.log(data[0]);
-
-    if (localStorage.getItem('shopcart') === null) {
-      localStorage.setItem('shopcart', JSON.stringify([]));
-    }
     let cart = JSON.parse(localStorage.getItem('shopcart'));
-    cart.push(data[0]);
-    localStorage.setItem('shopcart', JSON.stringify(cart));
+    if (cart === null) {
+      cart = data[0];
+      localStorage.setItem('shopcart', JSON.stringify([cart]));
+    } else {
+      cart = [...cart, data[0]];
+      localStorage.setItem('shopcart', JSON.stringify(cart));
+    }
   };
 
   return (
